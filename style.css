@@ -1,0 +1,315 @@
+/* General styling settings */
+
+:root {
+  --clr-copper: 29, 57%, 46%;
+  --clr-tin: 210, 2%, 83%;
+  --clr-code: 240, 100%, 50%;
+  --btn-height: calc(var(--fs-400) * 2);
+  --fs-800: 3.5rem;
+}
+
+@media (min-width: 35em) {
+  :root {
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-500: 1.25rem;
+    --fs-400: 1rem;
+  }
+}
+
+@media (min-width: 45em) {
+  :root {
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-500: 1.75rem;
+    --fs-400: 1.125rem;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  font-size: var(--fs-400);
+  font-weight: 400;
+}
+
+h1 {
+  font-size: var(--fs-800);
+  text-align: center;
+  margin-top: 3vh;
+  margin-bottom: 12vh;
+}
+
+button {
+  font: inherit;
+}
+
+code {
+  color: hsl(var(--clr-code));
+}
+
+.reading-optimized {
+  max-width: 60ch;
+  margin-inline: auto;
+  margin-top: 2rem;
+  line-height: 1.5em;
+}
+
+.sub-article-title {
+  padding-bottom: 3vh;
+}
+
+.reading-optimized ul {
+  list-style-position: inside;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.overline {
+  text-decoration: overline;
+}
+
+.default-figure {
+  width: 100%;
+  padding: 2ch 0;
+}
+
+figcaption {
+  margin-top: 0.5em;
+  text-align: center;
+  padding: 0.5em;
+}
+
+/* interactive NAND gate figure */
+
+#NAND-gate {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 2vh 2vw;
+}
+
+#NAND-gate-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
+
+#NAND-gate-inputs > div,
+#NAND-gate-output {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 1rem;
+  width: 100%;
+}
+
+#NAND-gate-inputs button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--btn-height);
+  min-width: min-content;
+  width: calc(var(--btn-height) * 3);
+  position: relative;
+  border-radius: 25% / 50%;
+  border: 2px solid grey;
+}
+
+#NAND-gate-inputs button span:nth-child(2) {
+  margin-left: 0.4rem;
+}
+
+#NAND-gate-inputs button span:nth-child(3) {
+  margin-right: 0.4rem;
+}
+
+.slide-circle {
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background-color: green;
+  position: absolute;
+  left: 0;
+  transition: left 0.5s;
+}
+
+.wire {
+  width: 100%;
+  height: 3px;
+  background-color: hsl(var(--clr-copper));
+}
+
+#NAND-gate-body {
+  display: flex;
+  align-items: center;
+}
+
+#NAND-gate-body > div:first-child {
+  width: 90%;
+  aspect-ratio: 3 / 2;
+  background-color: hsl(var(--clr-tin));
+  border-top-right-radius: calc(100% / 3) 50%;
+  border-bottom-right-radius: calc(100% / 3) 50%;
+  border: 2px solid black;
+}
+
+#NAND-gate-body > div:last-child {
+  width: 10%;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  background-color: hsl(var(--clr-tin));
+  border: 2px solid black;
+}
+
+#NAND-gate-output #wire-c {
+  background-color: yellow;
+}
+
+/* logic-table */
+
+.logic-table {
+  margin: 4vh auto;
+}
+
+.logic-table thead th {
+  border-bottom: 1px solid black;
+}
+
+.logic-table th,
+.logic-table td {
+  padding: 0.25em 0.5em;
+}
+
+.logic-table th:nth-child(3),
+.logic-table td:nth-child(3) {
+  padding-inline: 1em;
+}
+
+/* not(A and B) set graph */
+
+#AB-set-graph {
+  display: flex;
+  flex-direction: column;
+}
+
+#AB-set-graph > div {
+  position: relative;
+  height: 40ch;
+  background-color: yellow;
+}
+
+#AB-set-graph > div > span {
+  position: absolute;
+  left: 2.5%;
+  top: 2.5ch;
+}
+
+.set {
+  width: 50%;
+  aspect-ratio: 1;
+  background-color: yellow;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  position: absolute;
+  top: 5ch;
+}
+
+#set-A {
+  left: 10%;
+}
+
+#set-B {
+  right: 10%;
+  z-index: 2;
+  overflow: hidden;
+}
+
+#AB-intersection {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: white;
+  border-radius: 100%;
+  position: absolute;
+  left: -60%;
+  border: 1px solid black;
+}
+
+/* NOT gate figure */
+
+#NOT-gate {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#NOT-gate-body {
+  display: flex;
+  align-items: center;
+}
+
+#NOT-gate-inputs {
+  display: flex;
+  align-items: center;
+}
+
+#NOT-gate-inputs > div:first-child {
+  width: 50%;
+  height: 2px;
+  background-color: hsl(var(--clr-copper));
+}
+
+#NOT-gate-inputs > div:last-child {
+  height: 50%;
+  width: 50%;
+  border-top: 2px solid hsl(var(--clr-copper));
+  border-bottom: 2px solid hsl(var(--clr-copper));
+  border-left: 2px solid hsl(var(--clr-copper));
+}
+
+#NOT-gate-body > div:first-child {
+  width: 90%;
+  aspect-ratio: 3 / 2;
+  background-color: hsl(var(--clr-tin));
+  border-top-right-radius: calc(100% / 3) 50%;
+  border-bottom-right-radius: calc(100% / 3) 50%;
+  border: 1px solid black;
+}
+
+#NOT-gate-body > div:last-child {
+  width: 10%;
+  aspect-ratio: 1;
+  background-color: hsl(var(--clr-tin));
+  border-radius: 100%;
+  border: 1px solid black;
+}
+
+#NOT-gate-output {
+  display: flex;
+  align-items: center;
+}
+
+#NOT-gate-output > div {
+  width: 100%;
+  height: 2px;
+  background-color: hsl(var(--clr-copper));
+}
+
+/* How to build a NAND gate article */
+#NAND-gate-circuit-diagram {
+  margin-inline: auto;
+  display: block;
+}
