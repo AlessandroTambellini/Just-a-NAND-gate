@@ -1,235 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="NAND gate" />
-    <meta
-      name="description"
-      content="How the building block of a computer, the NAND gate, works"
-    />
-    <meta name="author" content="Alessandro Tambellini" />
-    <title>NAND gate</title>
-    <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js" defer></script>
-  </head>
-  <body>
-    <main>
-      <h1>Just a NAND gate</h1>
-      <article>
-        <div id="NAND-gate">
-          <div id="NAND-gate-inputs">
-            <div>
-              <button type="button" id="btn-wire-a">
-                <span class="slide-circle"></span>
-                <span>off</span>
-                <span>on</span>
-              </button>
-              <!-- input a -->
-              <p>a</p>
-              <div id="wire-a" class="wire"></div>
-            </div>
-            <div>
-              <button type="button" id="btn-wire-b">
-                <span class="slide-circle"></span>
-                <span>off</span>
-                <span>on</span>
-              </button>
-              <!-- input b -->
-              <p>b</p>
-              <div id="wire-b" class="wire"></div>
-            </div>
-          </div>
-          <div id="NAND-gate-body">
-            <div id="D-shape"></div>
-            <div id="NOT-circle"></div>
-          </div>
-          <div id="NAND-gate-output">
-            <!-- output c -->
-            <div id="wire-c" class="wire"></div>
-            <p>c</p>
-          </div>
-        </div>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="keywords" content="NAND gate" />
+	<meta name="description" content="NAND gate: how the building block of a computer works"/>
+	<meta name="author" content="Alessandro Tambellini" />
+	<title>NAND gate</title>
+	<link rel="stylesheet" href="./style.css" />
+	<script src="./script.js" defer></script>
+</head>
+<body>
+	<article>
+		<h1>NAND gate</h1>
 
-        <table class="logic-table">
-          <thead>
-            <tr>
-              <th scope="col">a</th>
-              <th scope="col">b</th>
-              <th scope="col">c</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="td-1">off</td>
-              <td>off</td>
-              <td>on</td>
-            </tr>
-            <tr>
-              <td class="td-1">on</td>
-              <td>off</td>
-              <td>on</td>
-            </tr>
-            <tr>
-              <td class="td-1">off</td>
-              <td>on</td>
-              <td>on</td>
-            </tr>
-            <tr>
-              <td class="td-1">on</td>
-              <td>on</td>
-              <td>off</td>
-            </tr>
-          </tbody>
-        </table>
+		<figure id="nand-gate">
+			<div>
+				<div>
+					<button id="nand-gate-a-btn">off</button>
+					<p>a</p><hr id="wire-a">
+				</div>
+				<div>
+					<button id="nand-gate-b-btn">off</button>
+					<p>b</p><hr id="wire-b">
+				</div>
+			</div>
+			<div></div>
+			<div></div>
+			<hr id="wire-c">
+			<p>c</p>
+		</figure>
 
-        <article class="reading-optimized">
-          <p>
-            The NAND gate follows the following
-            <a href="https://en.wikipedia.org/wiki/De_Morgan's_laws"
-              >De Morgan's law</a
-            >: <span class="overline">A &middot; B</span> =
-            <span class="overline">A</span> + <span class="overline">B</span>
-          </p>
-          <figure>
-            <figcaption style="padding: 0; text-align: left">
-              Symbology
-            </figcaption>
-            <ul>
-              <li><span class="overline">x</span> = NOT x</li>
-              <li>&middot; = AND = &cap; (intersection)</li>
-              <li>+ = OR = &cup; (union)</li>
-            </ul>
-          </figure>
-          <p>So, you can express the same meaning with different symbology:</p>
-          <ul>
-            <li>
-              <span class="overline">A &cap; B</span> =
-              <span class="overline">A</span> &cup;
-              <span class="overline">B</span>
-            </li>
-            <li>NOT(A AND B) = (NOT A) OR (NOT B)</li>
-            <li>
-              <span class="overline">A &middot; B</span> =
-              <span class="overline">A</span> + <span class="overline">B</span>
-            </li>
-            <li><code>!(A && B) === !A || !B</code> the JS way ;)</li>
-          </ul>
-          <p>
-            For clarity, try to replace A and B with <code>true</code> and
-            <code>false</code> and <code>console.log()</code> it. In whichever
-            way you set A and B, the output will always be <code>true</code>.
-          </p>
-          <figure id="AB-set-graph" class="default-figure">
-            <figcaption>
-              <span class="overline">A &middot; B</span> graph
-            </figcaption>
-            <div>
-              <span>outside sets</span>
-              <div id="set-A" class="set">A</div>
-              <div id="set-B" class="set">
-                B
-                <div id="AB-intersection"></div>
-              </div>
-            </div>
-          </figure>
+		<table class="logic-table">
+			<thead>
+				<tr>
+					<th scope="col">a</th>
+					<th scope="col">b</th>
+					<th scope="col">c</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="td-1">off</td>
+					<td>off</td>
+					<td>on</td>
+				</tr>
+				<tr>
+					<td class="td-1">on</td>
+					<td>off</td>
+					<td>on</td>
+				</tr>
+				<tr>
+					<td class="td-1">off</td>
+					<td>on</td>
+					<td>on</td>
+				</tr>
+				<tr>
+					<td class="td-1">on</td>
+					<td>on</td>
+					<td>off</td>
+				</tr>
+			</tbody>
+		</table>
 
-          <p>
-            The NAND gate is the only component you need to build a computer. I
-            am speaking about the computer itself without peripheral devices, so
-            only
-            <a href="https://en.wikipedia.org/wiki/Central_processing_unit"
-              >CPU</a
-            >
-            +
-            <a href="https://en.wikipedia.org/wiki/Random-access_memory">RAM</a>
-            <br />
-            Why?<br />
-            Because it has the amazing property of functional completeness. It
-            means that based on the way you combine the NAND gates, you can
-            express all possible truth tables (logical NAND, logical
-            conjunction, logical disjunction, logical equality, exlusive
-            disjunction, logical NOR).<br />
-            Let's make an example:
-          </p>
+		<p>
+			The NAND gate obeys to the following
+			<a href="https://en.wikipedia.org/wiki/De_Morgan's_laws">De Morgan's law</a>: 
+			<span class="overlined-text">(A &middot; B)</span> &#8801; <span class="overlined-text">(A</span> + <span class="overlined-text">B)</span>
+		</p>
 
-          <figure class="default-figure">
-            <figcaption>NOT gate</figcaption>
-            <div id="NOT-gate">
-              <div id="NOT-gate-inputs">
-                a, b
-                <div></div>
-                <div></div>
-              </div>
-              <div id="NOT-gate-body">
-                <!-- D-shape -->
-                <div></div>
-                <!-- NOT circle -->
-                <div></div>
-              </div>
-              <div id="NOT-gate-output">
-                <div></div>
-                c
-              </div>
-            </div>
-          </figure>
+		<p>
+			Simbology:
+		</p>
+		<ul>
+			<li>
+				Negation: <span class="overlined-text">x</span> == NOT x
+			</li>
+			<li>
+				Intersection: &middot; == AND == &cap;
+			</li>
+			<li>
+				Union: + == OR == &cup;
+			</li>
+		</ul>
 
-          <p>
-            I just wired together a and b, and by reading the table your are
-            going to understand why it's called NOT gate.
-          </p>
-          <table class="logic-table">
-            <thead>
-              <tr>
-                <th scope="col">a, b</th>
-                <th scope="col">c</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>off</td>
-                <td>on</td>
-              </tr>
-              <tr>
-                <td class="td-1">on</td>
-                <td>off</td>
-              </tr>
-            </tbody>
-          </table>
+		<p>You can express the same meaning with different symbology:</p>
+		<ul>
+			<li>
+				<span class="overlined-text">A &cap; B</span> 
+				==
+				<span class="overlined-text">A</span> &cup; <span class="overlined-text">B</span>
+			</li>
+			<li>
+				NOT(A AND B) == (NOT A) OR (NOT B)
+			</li>
+			<li>
+				<span class="overlined-text">A &middot; B</span> 
+				==
+				<span class="overlined-text">A</span> + <span class="overlined-text">B</span>
+			</li>
+			<li>
+				In JavaScript: <code>!(A && B) === !A || !B</code>
+			</li>
+		</ul>
 
-          <p>
-            For more information about the gates's logic and how they are wired
-            up together to build the computer logic I suggest the book
-            <a href="http://www.buthowdoitknow.com/">But How Do It Know?</a>
-          </p>
-        </article>
+		<p>
+			Try to replace A and B with <code>true</code> and
+			<code>false</code> and log it. In whichever
+			way you set A and B, the output will always be <code>true</code>.
+		</p>
 
-        <article class="reading-optimized">
-          <h2 class="sub-article-title">
-            But how can I build a gate? What makes a gate a gate?
-          </h2>
-          <p>
-            A gate is made of
-            <a href="https://en.wikipedia.org/wiki/Transistor">transistors</a>.
-            Transistors are
-            <a href="https://en.wikipedia.org/wiki/Semiconductor"
-              >semiconductor</a
-            >
-            devices that can act as switches or amplifiers. <br />
-            You can build a circuit on a breadboard to simulate the behaviour of
-            a NAND gate inside a microprocessor. Because they can be combined
-            together on an integrated circuit, it is now possible to put
-            billions of them in one package
-          </p>
-          <img
-            src="./NAND_gate_circuit_diagram.jpg"
-            alt="NAND gate circuit diagram"
-            id="NAND-gate-circuit-diagram"
-          />
-        </article>
-      </article>
-    </main>
-    <footer></footer>
-  </body>
+		<figure id="set-figure">
+			<figcaption>
+				<span class="overlined-text">A &middot; B</span>
+			</figcaption>
+			<div id="set-container">
+				<div class="set">A</div>
+				<div class="set">
+					B
+					<div id="sets-intersection"></div>
+				</div>
+			</div>
+		</figure>
+
+		<p>
+			The NAND gate is the only component needed to build a computer. 
+			When I say computer, I refer to CPU and RAM without peripheral devices.
+			This is possible, because the NAND gate has the property of 
+			<strong>functional completeness</strong>. 
+			It means that just by combining NAND gates, you can
+			express all possible truth tables: logical NAND, logical
+			conjunction, logical disjunction, logical equality, exlusive
+			disjunction, logical NOR.
+		</p>
+		
+		<p>Example</p>
+		<figure id="not-gate">
+			<p>a, b</p>
+			<hr>
+			<div></div>
+			<div></div>
+			<div></div>
+			<hr>
+			<p>c</p>
+		</figure>
+
+		<p>
+			I just wired together a and b, and by reading the table you can understand why it's called NOT gate.
+		</p>
+		<table class="logic-table">
+			<thead>
+			<tr>
+				<th scope="col">a, b</th>
+				<th scope="col">c</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td>off</td>
+				<td>on</td>
+			</tr>
+			<tr>
+				<td class="td-1">on</td>
+				<td>off</td>
+			</tr>
+			</tbody>
+		</table>
+
+		<p>
+			For more information about the gates and how they are wired
+			up together to build the computer logic, I suggest the book
+			<a href="http://www.buthowdoitknow.com/">But How Do It Know?</a>
+		</p>
+
+		<section>
+			<h2>
+				But how can I build a gate? And what makes a gate a gate?
+			</h2>
+			<p>
+				A gate is made of <strong>transistors</strong>.
+				Transistors are semiconductor devices that can act as switches or amplifiers.
+				You can build a circuit on a breadboard to simulate the behaviour of
+				a NAND gate inside a microprocessor. Because they can be combined
+				together on an integrated circuit, it is possible to put
+				billions of them in one package.
+			</p>
+			<img id="NAND-gate-circuit-diagram" src="./NAND_gate_circuit_diagram.jpg" alt="NAND gate circuit diagram"/>
+		</section>
+	</article>
+</body>
 </html>
